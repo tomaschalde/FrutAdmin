@@ -8,7 +8,48 @@ export class ReportsRepository {
 
     
     summarySales(periodo : string){
-        return periodo
+        const sales = this.salesRepository.getSales()
+        const today = new Date()
+
+        if(periodo === 'day'){
+            const actualDay = today.toISOString().split('T')[0];
+            const dailyData = sales.filter((sale) => sale.date === actualDay)
+
+            return dailyData
+        }
+        
+        else if (periodo === 'week'){
+            const weekData = [];
+            const weekMap = new Map();
+
+            sales.forEach(sale => {
+                const week = this.getWeekNumber(new Date(sale.date));
+                if (!weekMap.has(week)) {
+                  weekMap.set(week, { week, sales: [] });
+                  weekData.push(weekMap.get(week));
+                }
+                weekMap.get(week).sales.push(sale.details)
+              });
+
+            return weekData
+        }
+
+        else{
+            const monthlyData = [];
+            const monthMap = new Map();
+
+            sales.forEach(sale => {
+            const month = new Date(sale.date).getMonth() + 1; // Mes 1-12
+            if (!monthMap.has(month)) {
+                monthMap.set(month, { month, sales: [] });
+                monthlyData.push(monthMap.get(month));
+            }
+            monthMap.get(month).sales.push(sale.details);
+            });
+
+      
+          return monthlyData;
+        }
     }
 
     topSales(){
@@ -55,4 +96,9 @@ export class ReportsRepository {
     }
 
     
+    private getWeekNumber(date) {
+        const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+        const pastDaysOfYear = (date.getTime() - firstDayOfYear.getTime()) / 86400000;
+        return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+    }
 }
