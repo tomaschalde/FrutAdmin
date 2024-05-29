@@ -25,9 +25,9 @@ export const validateSale = (input) => {
     if(Number(date[0]) === Number(dateActual[0]) && Number(date[1]) < Number(dateActual[1]))
         errors = {...errors, date: "Seleccione un mes válido"};
 
-    //Si el mes recibido es igual al mes actual y el dia recibido es menor o igual al dia actual
-    if(Number(date[1]) === Number(dateActual[1]) && Number(date[2]) <= Number(dateActual[2])) 
-        errors = {...errors, date: "Seleccione un día válido"};
+    // //Si el mes recibido es igual al mes actual y el dia recibido es menor o igual al dia actual
+    // if(Number(date[1]) === Number(dateActual[1]) && Number(date[2]) <= Number(dateActual[2])) 
+    //     errors = {...errors, date: "Seleccione un día válido"};
 
     const dayWeek = new Date(input.date).getDay();
     

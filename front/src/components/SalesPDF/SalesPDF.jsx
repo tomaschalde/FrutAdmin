@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet} from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
   page: {
@@ -22,7 +24,6 @@ const SalesPDF = ({ data, typeReport }) => (
       <Page size="A4" style={styles.page} key={`${typeReport}-${index}`}>
         <View style={styles.section}>
         {typeReport === 'sales-summary?periodo=day' && (
-
           <React.Fragment>
             <Text>RESUMEN VENTAS DIA DE HOY {dato.date}</Text>
             <Text>Cliente: {dato.client}</Text>
@@ -114,10 +115,6 @@ const SalesPDF = ({ data, typeReport }) => (
   </Document>
 );
 
-// const SalesPDFViewer = ({ name, stock, price, date }) => (
-//   <PDFViewer style={{ width: '100%', height: '100vh' }}>
-//     <SalesPDF name ={name} stock={stock} price={price} date={date} />
-//   </PDFViewer>
 
 
 export default SalesPDF;

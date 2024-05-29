@@ -78,10 +78,16 @@ export class ReportsRepository {
     async lowStock(){
         const products = await this.inventoryRepository.getInventory()
 
-        return products.map((product) => {
+        const lowstock = products.map((product) => {
             if(product.stock < 5)
                 return product;
         })
+
+        if(!lowstock) return [{}]
+
+        return lowstock;
+
+        
     }
 
     totalRevenue(){

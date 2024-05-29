@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import styles from "./Card.module.css"
 import { useState } from "react";
