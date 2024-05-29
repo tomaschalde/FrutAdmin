@@ -13,16 +13,8 @@ export const productsSlice = createSlice({
             state.products = action.payload
         },
 
-        updatedStock: (state,action) => {
-            state.products = state.products.map((product) => {
-                if(product.name === action.payload.name){ 
-                    return {...product, stock: product.stock + action.payload.stock}
-                }
-                
-            })
-        }
 
     }
 })
 
-export const {updatedStock, setInventory} = productsSlice.actions;
+export const {setInventory} = productsSlice.actions;

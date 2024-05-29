@@ -14,6 +14,7 @@ const Inventory = () => {
             try {
                 const response = await axios.get('http://localhost:3000/inventory')
                 const products = response.data
+                console.log(products)
                 dispatch(setInventory(products))
                 
             } catch (error) {

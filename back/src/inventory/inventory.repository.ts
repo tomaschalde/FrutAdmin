@@ -39,7 +39,7 @@ export class InventoryRepository {
             const productIndex = products.findIndex(product => product.name === name);
 
             if(productIndex !== -1){
-                products[productIndex].stock += stock;
+                products[productIndex].stock = Number(products[productIndex].stock) + Number(stock);
             }
             else{
                 const newProduct = {
