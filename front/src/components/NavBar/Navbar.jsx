@@ -6,7 +6,7 @@ const Navbar = () => {
         <nav className= {styles.navbar}>
 
             <div className={styles.containerLogo}>
-                <img src="https://img.freepik.com/vector-premium/logotipo-mercado-frutas-logotipo-alimentos-frescos-frutas_663736-278.jpg" alt="Consultorio.img" />
+                <img src="https://img.freepik.com/vector-premium/logotipo-mercado-frutas-logotipo-alimentos-frescos-frutas_663736-278.jpg" alt="Logo.img" />
             </div>
 
             <div className={styles.containerOptions}>

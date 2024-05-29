@@ -1,13 +1,6 @@
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-unused-vars
-import axios from "axios";
-import styles from "./GenerateReports.module.css"
-// eslint-disable-next-line no-unused-vars
-import SalesPDFViewer from "../../components/SalesPDF/SalesPDF";
-// eslint-disable-next-line no-unused-vars
-import { saveAs } from 'file-saver';
 
-import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer';
+import styles from "./GenerateReports.module.css"
+
 import Card from "../../components/Card/Card";
 const GenerateReports = () => {
 
