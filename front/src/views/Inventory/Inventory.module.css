@@ -1,0 +1,36 @@
+.containerTurns {
+    margin-top: 20px;
+    margin-left: 40px ;
+
+    text-align: center; 
+
+}
+
+
+.containerMyTurns{
+    padding: 20px;
+    margin: 20px;
+
+    background-color: #f9f9f9;
+
+    border: 1px solid #ddd;
+
+
+}
+
+.containerMyTurns h3 {
+    font-size: 25px;
+
+    color: #2c3e50;
+}
+
+
+.title{
+    margin-bottom: 20px;
+
+    text-align: center;
+    font-size: 24px;
+    
+    color: #2c3e50;
+
+}
