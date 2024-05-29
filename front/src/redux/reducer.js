@@ -15,7 +15,10 @@ export const productsSlice = createSlice({
 
         updatedStock: (state,action) => {
             state.products = state.products.map((product) => {
-                return {...product, stock: product.stock += action.payload}
+                if(product.name === action.payload.name){ 
+                    return {...product, stock: product.stock + action.payload.stock}
+                }
+                
             })
         }
 

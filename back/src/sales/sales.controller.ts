@@ -13,7 +13,7 @@ export class SalesController {
     
     @Post()
     registerSale(@Body() sale : SaleDto) {
-        const {name, date, nameProduct, quantity, totalPrice} = sale
-        return this.salesServices.registerSale(name,date,nameProduct, quantity, totalPrice);
+        const {name, date, nameProduct, quantity} = sale
+        return this.salesServices.registerSale(name,date,nameProduct, quantity);
     }
 }

@@ -10,7 +10,7 @@ export class SalesRepository{
 
     constructor(private readonly inventoryRepository : InventoryRepository) {}
 
-    async addSale(name : string , date : string , nameProduct : string , quantity : number, totalPrice : number) {
+    async addSale(name : string , date : string , nameProduct : string , quantity : number) {
         try {
 
                 const products = await this.inventoryRepository.getInventory()
@@ -34,7 +34,7 @@ export class SalesRepository{
                 details: {
                     name: nameProduct,
                     quantity: quantity,
-                    totalPrice: totalPrice
+                    totalPrice: quantity * products[productIndex].price
                 }
             }
 
@@ -43,7 +43,7 @@ export class SalesRepository{
             return 'Venta registrada'
 
         } catch (error) {
-            return error.message
+            throw error
         }
     }
 

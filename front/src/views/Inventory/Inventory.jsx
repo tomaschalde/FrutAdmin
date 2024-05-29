@@ -13,12 +13,11 @@ const Inventory = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://localhost:3000/inventory')
-                const newProduct = response.data
-                dispatch(setInventory(newProduct))
-
+                const products = response.data
+                dispatch(setInventory(products))
                 
             } catch (error) {
-                console.log("Error al obtener los datos")
+                console.log("Error al obtener los datos", error.message)
             }
         }
 

@@ -5,9 +5,12 @@ import styles from "./CreateProduct.module.css"
 import axios from "axios";
 import { validateProduct } from "../../helpers/Validate";
 
+
+
 const CreateProduct = () => {
 
     const navigate = useNavigate()
+    
 
     const initialState = {
         name: "",
@@ -46,6 +49,7 @@ const CreateProduct = () => {
                     date: form.date,
                 })
 
+                
                 alert("El producto se cargó con éxito ")
                 navigate("/");
                 setForm(initialState);

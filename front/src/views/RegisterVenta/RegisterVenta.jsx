@@ -38,7 +38,6 @@ const RegisterVenta = () => {
         const create = async () => {
             try {
 
-
                 // eslint-disable-next-line no-unused-vars
                 const response = await axios.post(`http://localhost:3000/sales`, {
                     name: form.name,
@@ -48,13 +47,11 @@ const RegisterVenta = () => {
                     totalPrice: form.totalPrice
                 })
 
-                
-                alert("La venta se registró con éxito ")
                 setForm(initialState);
-
+                alert("La venta se registró con éxito ")
             } catch (error) {
-                console.log("Error al registrar venta" , error.message)
-                alert("No se pudo registrar la venta")
+                console.log("Error al registrar venta")
+                alert(`No se pudo registrar la venta ${error}`)
             }
 
         }

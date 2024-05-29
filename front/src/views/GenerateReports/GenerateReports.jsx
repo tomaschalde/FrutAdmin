@@ -1,52 +1,57 @@
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
 import axios from "axios";
 import styles from "./GenerateReports.module.css"
+// eslint-disable-next-line no-unused-vars
 import SalesPDFViewer from "../../components/SalesPDF/SalesPDF";
+// eslint-disable-next-line no-unused-vars
 import { saveAs } from 'file-saver';
 
 import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer';
+import Card from "../../components/Card/Card";
 const GenerateReports = () => {
 
-    const handleGenerateReport = async (reportType) => {
-        try {
-          // Realizar petición GET a la base de datos para obtener los datos del reporte
-          const response = await axios.get(`http://localhost:3000/inventory`);
-          const reportData = response.data
-          if(!reportData) throw new Error ("NO EXISTE EL ELEMENTO")
-          // Generar el PDF con los datos obtenidos
-          const pdfBlob = await generatePDF(reportData);
-          console.log(pdfBlob)
+    // const handleGenerateReport = async (reportType) => {
+    //     try {
+    //       // Realizar petición GET a la base de datos para obtener los datos del reporte
+    //       const response = await axios.get(`http://localhost:3000/inventory`);
+    //       const reportData = response.data
+    //       if(!reportData) throw new Error ("NO EXISTE EL ELEMENTO")
+    //       // Generar el PDF con los datos obtenidos
+    //       const pdfBlob = await generatePDF(reportData);
+    //       console.log(pdfBlob)
     
-          // Guardar el PDF
-          saveAs(pdfBlob, `${reportType}_report.pdf`);
-        } catch (error) {
-          console.error("Error al generar el reporte:", error);
-        }
-      };
+    //       // Guardar el PDF
+    //       saveAs(pdfBlob, `${reportType}_report.pdf`);
+    //     } catch (error) {
+    //       console.error("Error al generar el reporte:", error);
+    //     }
+    //   };
     
-      const generatePDF = async (reportData) => {
-        return reportData.map(product => {
-            <Document>
-            <Page size="A4" style={styles.page}>
-              <View style={styles.section}>
-                <Text>Producto: {product.name}</Text>
-                <Text>Stock: {product.stock}</Text>
-                <Text>Precio: {product.price}</Text>
-                <Text>Fecha: {product.date}</Text>
-              </View>
-            </Page>
-          </Document>
-        })
+    //   const generatePDF = async (reportData) => {
+    //     return reportData.map(product => {
+    //         <Document>
+    //         <Page size="A4" style={styles.page}>
+    //           <View style={styles.section}>
+    //             <Text>Producto: {product.name}</Text>
+    //             <Text>Stock: {product.stock}</Text>
+    //             <Text>Precio: {product.price}</Text>
+    //             <Text>Fecha: {product.date}</Text>
+    //           </View>
+    //         </Page>
+    //       </Document>
+    //     })
 
-      };
-    // eslint-disable-next-line react/prop-types
-    function Card({ description, reportType }) {
-        return (
-          <div className={styles.card}>
-            <p>{description}</p>
-            <button className={styles.customButton} onClick={() => handleGenerateReport({reportType})}>Generar Reporte</button>
-          </div>
-        );
-      }
+    //   };
+    // // eslint-disable-next-line react/prop-types
+    // function Card({ description, reportType }) {
+    //     return (
+    //       <div className={styles.card}>
+    //         <p>{description}</p>
+    //         <button className={styles.customButton} onClick={() => handleGenerateReport({reportType})}>Generar Reporte</button>
+    //       </div>
+    //     );
+    //   }
 
       return (
         <>

@@ -18,6 +18,4 @@ export class SaleDto {
     @IsNotEmpty()
     quantity: number;
     
-    @IsNotEmpty()
-    totalPrice: number;
 }

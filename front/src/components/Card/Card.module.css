@@ -1,0 +1,24 @@
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px; /* Aumenta el espacio entre las tarjetas */
+  }
+  
+  .card p {
+    margin-bottom: 15px; /* Aumenta el espacio entre el texto y el botón */
+  }
+  
+  .card button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Aumenta el espacio entre el botón y el texto */
+  }
+  
+  .card button:hover {
+    background-color: #0056b3;
+  }
