@@ -92,7 +92,7 @@ export class ReportsRepository {
             productsSold.push(sale.details.name)
             total = total + sale.details.totalPrice
         })
-        return {productsSold,total}
+        return [{productsSold,total}]
     }
 
     
