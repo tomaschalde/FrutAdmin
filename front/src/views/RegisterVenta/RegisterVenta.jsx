@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { labelsRegister } from "../../helpers/labels"
 import styles from "./Register.module.css"
 import axios from "axios"
+import { validateSale } from "../../helpers/Validate"
 
 
 const RegisterVenta = () => {
@@ -9,14 +10,14 @@ const RegisterVenta = () => {
     const initialState = {
         name: "",
         date: "",
-        product:"",
+        nameProduct:"",
         quantity:0,
         totalPrice:0
 
     }
 
     const [form, setForm] = useState(initialState);
-    // const [errors, setErrors] = useState(initialState);
+    const [errors, setErrors] = useState(initialState);
 
     const handleInputChange = (event) => {
         const {name,value} = event.target;
@@ -27,9 +28,9 @@ const RegisterVenta = () => {
         })
     }
 
-    // useEffect( () => { 
-    //     setErrors();
-    // }, [form])
+    useEffect( () => { 
+        setErrors(validateSale(form));
+    }, [form])
 
     const handleOnSubmit = (event) => {
         event.preventDefault();
@@ -42,9 +43,9 @@ const RegisterVenta = () => {
                 const response = await axios.post(`http://localhost:3000/sales`, {
                     name: form.name,
                     date: form.date,
-                    nameProduct:form.product,
-                    quantity:form.quantity,
-                    totalPrice:form.totalPrice
+                    nameProduct: form.nameProduct,
+                    quantity: form.quantity,
+                    totalPrice: form.totalPrice
                 })
 
                 
@@ -76,19 +77,14 @@ const RegisterVenta = () => {
                             <div key = {name}>
                                 <label>{label}</label>
                                 <input type={type} onChange = {handleInputChange} name = {name} value={form[name]}/>
-                                {/* {errors[name] && <span key= {name} className={styles.errorMessage}> {errors [name]} </span>} */}
+                                {errors[name] && <span key= {name} className={styles.errorMessage}> {errors [name]} </span>}
                             </div>
                         )
                     })
 
                 }
                 
-                  
-
-                <button type="submit">Registrar venta</button>
-                
-                
-                
+                <button disabled = {errors.name || errors.date || errors.nameProduct|| errors.quantity || errors.totalPrice} type="submit">Registrar venta</button>
             </form>
 
             

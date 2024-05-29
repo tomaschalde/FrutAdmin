@@ -2,9 +2,11 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import * as fs from 'fs';
 import * as path from 'path';
 
+
+
 @Injectable()
 export class InventoryRepository {
-    private id = 0;
+    
 
     private readonly productsFile = path.join(__dirname,'products.json');
     constructor() {
@@ -41,7 +43,7 @@ export class InventoryRepository {
             }
             else{
                 const newProduct = {
-                    id: this.id + 1,
+                    id: products.length + 1,
                     name: name,
                     stock: stock,
                     price : price,

@@ -3,8 +3,10 @@ import { useState } from "react";
 import styles from "./Product.module.css"
 import axios from "axios";
 
+// eslint-disable-next-line react/prop-types
 const Product = ({data, onDelete}) => {
 
+    // eslint-disable-next-line react/prop-types
     const {id,name,stock,price,date} = data
 
 
@@ -14,11 +16,18 @@ const Product = ({data, onDelete}) => {
 
         const deleteP = async () => {
             try {
-                console.log(id)
-                await axios.delete(`http://localhost:3000/inventory/${id}`,)
-                onDelete(id)
-                alert("El producto se eliminó con éxito ",)
-                setIsVisible(false);
+                const confirmation = window.confirm ('¿Estás seguro que deseas eliminar el producto?')
+
+                if(confirmation){
+                    await axios.delete(`http://localhost:3000/inventory/${id}`,)
+                    onDelete(id)
+                    alert("El producto se eliminó con éxito ",)
+                    setIsVisible(false);
+                }
+                else{
+                    alert("El producto continua guardado")
+                }
+
             } catch (error) {
                 console.log("Error al eliminar producto" , error.message)
                 alert("No se pudo eliminar el producto")

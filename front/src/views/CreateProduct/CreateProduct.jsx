@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { labelsProduct } from "../../helpers/labels"
 import styles from "./CreateProduct.module.css"
 import axios from "axios";
+import { validateProduct } from "../../helpers/Validate";
 
 const CreateProduct = () => {
 
@@ -16,7 +17,7 @@ const CreateProduct = () => {
     }
 
     const [form, setForm] = useState(initialState);
-    // const [errors, setErrors] = useState(initialState);
+    const [errors, setErrors] = useState(initialState);
 
     const handleInputChange = (event) => {
         const {name,value} = event.target;
@@ -27,9 +28,9 @@ const CreateProduct = () => {
         })
     }
 
-    // useEffect( () => { 
-    //     setErrors();
-    // }, [form])
+    useEffect( () => { 
+        setErrors(validateProduct(form));
+    }, [form])
 
     const handleOnSubmit = (event) => {
         event.preventDefault();
@@ -45,7 +46,6 @@ const CreateProduct = () => {
                     date: form.date,
                 })
 
-                
                 alert("El producto se cargó con éxito ")
                 navigate("/");
                 setForm(initialState);
@@ -70,14 +70,14 @@ const CreateProduct = () => {
                         <div key = {name}>
                             <label>{label}</label>
                             <input type={type} onChange = {handleInputChange} name = {name} value={form[name]}/>
-                            {/* {errors[name] && <span key= {name} className={styles.errorMessage}> {errors [name]} </span>} */}
+                            {errors[name] && <span key= {name} className={styles.errorMessage}> {errors [name]} </span>}
                         </div>
                     )
                 })
 
             }
 
-            <button  type = "submit">Cargar Producto</button>
+            <button disabled = {errors.name || errors.date || errors.stock || errors.price} type = "submit">Cargar Producto</button>
 
             </form>
         </div>

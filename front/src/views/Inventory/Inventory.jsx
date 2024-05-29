@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
 import styles from "./Inventory.module.css"
-import { useEffect } from "react";
+import { useEffect} from "react";
 import axios from "axios";
-import { setInventory } from "../../redux/reducer";
+import { setInventory} from "../../redux/reducer";
 import Product from "../../components/Product/Product";
 
 const Inventory = () => {
@@ -13,8 +13,10 @@ const Inventory = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://localhost:3000/inventory')
-                dispatch(setInventory(response.data))
+                const newProduct = response.data
+                dispatch(setInventory(newProduct))
 
+                
             } catch (error) {
                 console.log("Error al obtener los datos")
             }
@@ -22,6 +24,7 @@ const Inventory = () => {
 
         fetchData()
     }, [])
+
 
     const handleDeleteProduct = (id) => {
         dispatch(setInventory(products.filter(product => product.id !== id)));
