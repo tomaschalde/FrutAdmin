@@ -29,7 +29,7 @@ const SalesPDF = ({ data, typeReport }) => (
             <Text>Cliente: {dato.client}</Text>
             <Text>Producto: {dato.details.name}</Text>
             <Text>Cantidad: {dato.details.quantity}</Text>
-            <Text>Precio Total: {dato.details.totalPrice}</Text>
+            <Text>Precio Total ${dato.details.totalPrice}</Text>
             <Text>______________________________________________________________________________</Text>
           </React.Fragment>
 
@@ -44,7 +44,7 @@ const SalesPDF = ({ data, typeReport }) => (
                 <React.Fragment key={`sale-${i}`}>
                   <Text>Producto: {sale.name}</Text>
                   <Text>Cantidad: {sale.quantity}</Text>
-                  <Text>Precio Total: {sale.totalPrice}</Text>
+                  <Text>Precio Total ${sale.totalPrice}</Text>
                   <Text>-------------------------------------</Text>
                 </React.Fragment>
           ))}
@@ -61,7 +61,7 @@ const SalesPDF = ({ data, typeReport }) => (
                 <React.Fragment key={`sale-${i}`}>
                   <Text>Producto: {sale.name}</Text>
                   <Text>Cantidad: {sale.quantity}</Text>
-                  <Text>Precio Total: {sale.totalPrice}</Text>
+                  <Text>Precio Total ${sale.totalPrice}</Text>
                   <Text>-------------------------------------</Text>
                 </React.Fragment>
           ))}
@@ -87,7 +87,7 @@ const SalesPDF = ({ data, typeReport }) => (
           <Text>PRODUCTOS CON BAJO STOCK</Text>
           <Text>Producto: {dato.name}</Text>
           <Text>Stock: {dato.stock}</Text>
-          <Text>Precio: {dato.price}</Text>
+          <Text>Precio ${dato.price}</Text>
           <Text>______________________________________________________________________________</Text>
         </React.Fragment>
 
@@ -103,7 +103,7 @@ const SalesPDF = ({ data, typeReport }) => (
                 </React.Fragment>
           ))}
           <Text>-------------------------------------</Text>
-          <Text>Ganancia total: {dato.total}</Text>
+          <Text>Ganancia total ${dato.total}</Text>
           <Text>______________________________________________________________________________</Text>
         </React.Fragment>
 

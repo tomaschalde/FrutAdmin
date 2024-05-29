@@ -16,11 +16,9 @@ const Card = ({description, reportType}) => {
         const response = await axios.get(`http://localhost:3000/reports/${reportType}`)  
         const reportData = response.data;
         setReportData(reportData)
-        console.log(reportData)
-        alert('SE GENERA UN PDF')
 
       } catch (error) {
-        alert('ERROR')
+        alert('Error al generar reporte')
       }
     }
 

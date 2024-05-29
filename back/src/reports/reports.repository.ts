@@ -75,20 +75,21 @@ export class ReportsRepository {
 
     }
 
-    async lowStock(){
-        const products = await this.inventoryRepository.getInventory()
-
-        const lowstock = products.map((product) => {
-            if(product.stock < 5)
-                return product;
-        })
-
-        if(!lowstock) return [{}]
-
-        return lowstock;
-
-        
-    }
+    async lowStock() {
+        try {
+          const products = await this.inventoryRepository.getInventory();
+          const lowStockProducts = products.filter(product => product.stock < 5);
+      
+          
+          if (lowStockProducts.length === 0) return [];
+      
+          return lowStockProducts;
+        } catch (error) {
+          console.log('Ocurrio un error')
+          return [];
+        }
+      }
+      
 
     totalRevenue(){
         const sales = this.salesRepository.getSales()
