@@ -30,7 +30,6 @@ const Inventory = () => {
     return (
                 <div className= {styles.containerMyTurns}>
                     <h1 className={styles.title}>INVENTARIO</h1>
-        
                     {
                         !products?.length > 0 ? <h3>No hay productos en el inventario</h3> :
                             (

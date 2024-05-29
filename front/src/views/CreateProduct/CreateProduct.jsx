@@ -37,7 +37,6 @@ const CreateProduct = () => {
         const create = async () => {
             try {
 
-
                 // eslint-disable-next-line no-unused-vars
                 const response = await axios.post(`http://localhost:3000/inventory`, {
                     name:form.name, 
@@ -65,7 +64,6 @@ const CreateProduct = () => {
         <>
             <div className={styles.formContainer}>
             <form onSubmit={handleOnSubmit}>
-            
             {
                 labelsProduct.map( ({name,label,type}) => {
                     return (
@@ -79,8 +77,6 @@ const CreateProduct = () => {
 
             }
 
-
-            
             <button  type = "submit">Cargar Producto</button>
 
             </form>
